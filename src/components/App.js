@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from "./Header";
-import Search from "./Search";
 import MoviesList from "./MoviesList";
 
 function App() {
@@ -8,9 +7,8 @@ function App() {
     <div>
       <Header appName="Movies"/>
 
-      <Search/>
-
       <MoviesList/>
+      
     </div>
   );
 }
