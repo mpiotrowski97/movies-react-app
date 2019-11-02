@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const StyledHeader = styled.header({
   padding: '15px 0',
@@ -8,11 +9,21 @@ const StyledHeader = styled.header({
   textTransform: 'uppercase',
   fontWeight: 'bold',
   background: '#2b2e37',
-  color: 'white'
+  color: 'white',
+  a: {
+    color: 'inherit',
+    textDecoration: 'none'
+  }
 });
 
 function Header(props) {
-  return <StyledHeader>{ props.appName }</StyledHeader>
+  return (
+    <StyledHeader>
+      <Link to={`/`}>
+        { props.appName }
+      </Link>
+    </StyledHeader>
+  );
 }
 
 export default Header;
