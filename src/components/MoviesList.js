@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 import Movie from "./Movie";
 import Search from "./Search";
+import Loader from "./Loader";
 
 function MoviesList() {
   const StyledMoviesWrapper = styled.div`
@@ -13,22 +14,32 @@ function MoviesList() {
   `;
 
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost/api/movies')
       .then(response => response.json())
       .then(data => {
         setMovies(data['hydra:member']);
-      });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }, []);
 
   return (
     <div>
-      <Search/>
+      {isLoading
+        ? <Loader/>
+        :
+        <div>
+          <Search/>
 
-      <StyledMoviesWrapper>
-        { movies.map(movie => (<Movie key={movie.id} {...movie} />)) }
-      </StyledMoviesWrapper>
+          <StyledMoviesWrapper>
+            {movies.map(movie => (<Movie key={movie.id} {...movie} />))}
+          </StyledMoviesWrapper>
+        </div>
+      }
     </div>
   )
 }
