@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Movie from "./Movie";
 import Search from "./Search";
 import Loader from "./Loader";
+import {API_URL} from "../common/config";
 
 function MoviesList() {
   const StyledMoviesWrapper = styled.div`
@@ -17,7 +18,7 @@ function MoviesList() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost/api/movies')
+    fetch(`${API_URL}/movies`)
       .then(response => response.json())
       .then(data => {
         setMovies(data['hydra:member']);

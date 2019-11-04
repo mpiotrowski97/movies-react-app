@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {MEDIA_URL} from "../common/config";
 
 function Movie(props) {
   const StyledMovie = styled.div({
@@ -31,7 +32,7 @@ function Movie(props) {
     <StyledMovie>
       <Link to={`/movies/${props.id}`}>
         <h2>{props.title}</h2>
-        <img src={require('../assets/images/poster.jpg')} alt="poster"/>
+        <img src={`${MEDIA_URL}/posters/${props.posterFilename}`} alt="poster"/>
         <small>(2019)</small>
       </Link>
     </StyledMovie>

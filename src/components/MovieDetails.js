@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
 import Loader from "./Loader";
+import {API_URL, MEDIA_URL} from "../common/config";
 
 function MovieDetails() {
   const { id } = useParams();
@@ -10,7 +11,7 @@ function MovieDetails() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost/api/movies/${id}`)
+    fetch(`${API_URL}/movies/${id}`)
       .then(response => response.json())
       .then(data => {
         setMovie(data);
@@ -36,7 +37,7 @@ function MovieDetails() {
         <div>
           <StyledMovieDetailsWrapper>
             <div>
-              <img src={require('../assets/images/poster.jpg')} alt="poster"/>
+              <img src={`${MEDIA_URL}/posters/${movie.posterFilename}`} alt="poster" style={{width: '100%'}}/>
             </div>
             <StyledMovieDetails>
               <h3>{ movie.title }</h3>
