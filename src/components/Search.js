@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 
-function Search() {
+function Search(props) {
   const StyledSearchWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -25,10 +25,18 @@ function Search() {
     width: 500px;
   `;
 
+  function handleChange(event) {
+    props.change(event.target.value);
+  }
+
+  function handleClick() {
+    props.change('');
+  }
+
   return (
     <StyledSearchWrapper>
-      <StyledSearchInput type="text"/>
-      <StyledSearchButton>Search</StyledSearchButton>
+      <StyledSearchInput type="text" value={props.search} onChange={handleChange}/>
+      <StyledSearchButton onClick={handleClick}>Clear search</StyledSearchButton>
     </StyledSearchWrapper>
   );
 }
