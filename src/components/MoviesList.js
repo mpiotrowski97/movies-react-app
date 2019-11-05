@@ -5,8 +5,7 @@ import Search from "./Search";
 import Loader from "./Loader";
 import {API_URL} from "../common/config";
 
-function MoviesList() {
-  const StyledMoviesWrapper = styled.div`
+const StyledMoviesWrapper = styled.div`
     width: 800px;
     margin: 20px auto;
     display: flex;
@@ -14,6 +13,7 @@ function MoviesList() {
     flex-wrap: wrap;
   `;
 
+function MoviesList() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,7 +43,7 @@ function MoviesList() {
 
   return (
     <div>
-      <Search change={(search) => {setSearch(search)}} search={search} />
+      <Search key="sad" change={(search) => {setSearch(search)}} search={search} />
 
       {isLoading
         ? <Loader/>

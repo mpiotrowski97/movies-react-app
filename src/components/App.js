@@ -10,7 +10,7 @@ function App() {
       <Header appName="Movies"/>
 
       <Switch>
-        <Route exact path="/" component={MoviesList} />
+        <Route exact path="/" component={() => <MoviesList/>} />
         <Route path="/movies/:id" component={MovieDetails}/>
       </Switch>
 
